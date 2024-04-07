@@ -1,0 +1,1032 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище LaboratoryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Analyzers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Invoices_Issued" Type="money" />
+          <Property Name="ID_Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees_Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Employee" Type="int" Nullable="false" />
+          <Property Name="ID_Service" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enters">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Emloyee" Type="int" />
+          <Property Name="Last_Enter_Date" Type="date" />
+          <Property Name="Last_Enter_Time" Type="time" Precision="7" />
+          <Property Name="Success" Type="bit" />
+        </EntityType>
+        <EntityType Name="Insurances">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="INN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PC" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Bik" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Patient" Type="int" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Create_Date" Type="date" Nullable="false" />
+          <Property Name="ID_Order_Status" Type="int" />
+          <Property Name="Order_Fulfillment_Days" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders_Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Order" Type="int" Nullable="false" />
+          <Property Name="ID_Service" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guid" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Social_Sec_Number" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ein" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID_Social_Sec_Type" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Passport_Series" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Passport_Number" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Birth_Date_Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="ID_Country" Type="int" Nullable="false" />
+          <Property Name="ID_Insurance" Type="int" Nullable="false" />
+          <Property Name="IP_Adress" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="UA" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Execution_Period" Type="int" />
+          <Property Name="Average_Deviation" Type="float" />
+        </EntityType>
+        <EntityType Name="Services_Provision">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Order_Service" Type="int" Nullable="false" />
+          <Property Name="Result" Type="float" Nullable="false" />
+          <Property Name="Finished_Date_Time" Type="datetime" Nullable="false" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+          <Property Name="ID_Status" Type="int" Nullable="false" />
+          <Property Name="ID_Analyzer" Type="int" Nullable="false" />
+          <Property Name="ID_Employee" Type="int" Nullable="false" />
+          <Property Name="Execution_Seconds" Type="float" />
+        </EntityType>
+        <EntityType Name="Social_Security_Types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Employees__ID_Em__4F7CD00D">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees_Services" Type="Self.Employees_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees_Services">
+              <PropertyRef Name="ID_Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__ID_Ro__4E88ABD4">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__ID_Se__5070F446">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Employees_Services" Type="Self.Employees_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees_Services">
+              <PropertyRef Name="ID_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ID_Order__5165187F">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_Order_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ID_Patie__52593CB8">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_Se__ID_Or__534D60F1">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_Se__ID_Se__5441852A">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="ID_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patients__ID_Cou__5535A963">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patients__ID_Ins__5629CD9C">
+          <End Role="Insurances" Type="Self.Insurances" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurances">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="ID_Insurance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patients__ID_Soc__571DF1D5">
+          <End Role="Social_Security_Types" Type="Self.Social_Security_Types" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Social_Security_Types">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="ID_Social_Sec_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_An__5812160E">
+          <End Role="Analyzers" Type="Self.Analyzers" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analyzers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Analyzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_Em__59063A47">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_Or__59FA5E80">
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders_Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Order_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_St__5AEE82B9">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enters_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Enters" Type="Self.Enters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Enters">
+              <PropertyRef Name="ID_Emloyee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище LaboratoryModelContainer">
+          <EntitySet Name="Analyzers" EntityType="Self.Analyzers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees_Services" EntityType="Self.Employees_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enters" EntityType="Self.Enters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurances" EntityType="Self.Insurances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders_Services" EntityType="Self.Orders_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services_Provision" EntityType="Self.Services_Provision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Social_Security_Types" EntityType="Self.Social_Security_Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employees__ID_Em__4F7CD00D" Association="Self.FK__Employees__ID_Em__4F7CD00D">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Services" EntitySet="Employees_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__ID_Ro__4E88ABD4" Association="Self.FK__Employees__ID_Ro__4E88ABD4">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__ID_Se__5070F446" Association="Self.FK__Employees__ID_Se__5070F446">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Employees_Services" EntitySet="Employees_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ID_Order__5165187F" Association="Self.FK__Orders__ID_Order__5165187F">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ID_Patie__52593CB8" Association="Self.FK__Orders__ID_Patie__52593CB8">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_Se__ID_Or__534D60F1" Association="Self.FK__Orders_Se__ID_Or__534D60F1">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_Se__ID_Se__5441852A" Association="Self.FK__Orders_Se__ID_Se__5441852A">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patients__ID_Cou__5535A963" Association="Self.FK__Patients__ID_Cou__5535A963">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patients__ID_Ins__5629CD9C" Association="Self.FK__Patients__ID_Ins__5629CD9C">
+            <End Role="Insurances" EntitySet="Insurances" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patients__ID_Soc__571DF1D5" Association="Self.FK__Patients__ID_Soc__571DF1D5">
+            <End Role="Social_Security_Types" EntitySet="Social_Security_Types" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_An__5812160E" Association="Self.FK__Services___ID_An__5812160E">
+            <End Role="Analyzers" EntitySet="Analyzers" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_Em__59063A47" Association="Self.FK__Services___ID_Em__59063A47">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_Or__59FA5E80" Association="Self.FK__Services___ID_Or__59FA5E80">
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_St__5AEE82B9" Association="Self.FK__Services___ID_St__5AEE82B9">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enters_Employees" Association="Self.FK_Enters_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Enters" EntitySet="Enters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LaboratoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Analyzers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Services_Provision" Relationship="Self.FK__Services___ID_An__08B54D69" FromRole="Analyzers" ToRole="Services_Provision" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK__Patients__ID_Cou__72C60C4A" FromRole="Countries" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Invoices_Issued" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ID_Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees_Services" Relationship="Self.FK__Employees__ID_Em__5EBF139D" FromRole="Employees" ToRole="Employees_Services" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Employees__ID_Ro__5BE2A6F2" FromRole="Employees" ToRole="Roles" />
+          <NavigationProperty Name="Services_Provision" Relationship="Self.FK__Services___ID_Em__09A971A2" FromRole="Employees" ToRole="Services_Provision" />
+          <NavigationProperty Name="Enters" Relationship="LaboratoryModel.FK_Enters_Employees" FromRole="Employees" ToRole="Enters" />
+        </EntityType>
+        <EntityType Name="Employees_Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Employee" Type="Int32" Nullable="false" />
+          <Property Name="ID_Service" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__ID_Em__5EBF139D" FromRole="Employees_Services" ToRole="Employees" />
+          <NavigationProperty Name="Services" Relationship="Self.FK__Employees__ID_Se__5FB337D6" FromRole="Employees_Services" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Insurances">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK__Patients__ID_Ins__73BA3083" FromRole="Insurances" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Patient" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Create_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Order_Status" Type="Int32" />
+          <Property Name="Order_Fulfillment_Days" Type="Int32" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK__Orders__ID_Order__7F2BE32F" FromRole="Orders" ToRole="Statuses" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK__Orders__ID_Patie__7E37BEF6" FromRole="Orders" ToRole="Patients" />
+          <NavigationProperty Name="Orders_Services" Relationship="Self.FK__Orders_Se__ID_Or__02084FDA" FromRole="Orders" ToRole="Orders_Services" />
+        </EntityType>
+        <EntityType Name="Orders_Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Order" Type="Int32" Nullable="false" />
+          <Property Name="ID_Service" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders_Se__ID_Or__02084FDA" FromRole="Orders_Services" ToRole="Orders" />
+          <NavigationProperty Name="Services" Relationship="Self.FK__Orders_Se__ID_Se__02FC7413" FromRole="Orders_Services" ToRole="Services" />
+          <NavigationProperty Name="Services_Provision" Relationship="Self.FK__Services___ID_Or__06CD04F7" FromRole="Orders_Services" ToRole="Services_Provision" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Guid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Social_Sec_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ein" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Social_Sec_Type" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passport_Series" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passport_Number" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birth_Date_Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Country" Type="Int32" Nullable="false" />
+          <Property Name="ID_Insurance" Type="Int32" Nullable="false" />
+          <Property Name="IP_Adress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK__Patients__ID_Cou__72C60C4A" FromRole="Patients" ToRole="Countries" />
+          <NavigationProperty Name="Insurances" Relationship="Self.FK__Patients__ID_Ins__73BA3083" FromRole="Patients" ToRole="Insurances" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_Patie__7E37BEF6" FromRole="Patients" ToRole="Orders" />
+          <NavigationProperty Name="Social_Security_Types" Relationship="Self.FK__Patients__ID_Soc__71D1E811" FromRole="Patients" ToRole="Social_Security_Types" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__ID_Ro__5BE2A6F2" FromRole="Roles" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Execution_Period" Type="Int32" />
+          <Property Name="Average_Deviation" Type="Double" />
+          <NavigationProperty Name="Employees_Services" Relationship="Self.FK__Employees__ID_Se__5FB337D6" FromRole="Services" ToRole="Employees_Services" />
+          <NavigationProperty Name="Orders_Services" Relationship="Self.FK__Orders_Se__ID_Se__02FC7413" FromRole="Services" ToRole="Orders_Services" />
+        </EntityType>
+        <EntityType Name="Services_Provision">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Order_Service" Type="Int32" Nullable="false" />
+          <Property Name="Result" Type="Double" Nullable="false" />
+          <Property Name="Finished_Date_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+          <Property Name="ID_Status" Type="Int32" Nullable="false" />
+          <Property Name="ID_Analyzer" Type="Int32" Nullable="false" />
+          <Property Name="ID_Employee" Type="Int32" Nullable="false" />
+          <Property Name="Execution_Seconds" Type="Double" />
+          <NavigationProperty Name="Analyzers" Relationship="Self.FK__Services___ID_An__08B54D69" FromRole="Services_Provision" ToRole="Analyzers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Services___ID_Em__09A971A2" FromRole="Services_Provision" ToRole="Employees" />
+          <NavigationProperty Name="Orders_Services" Relationship="Self.FK__Services___ID_Or__06CD04F7" FromRole="Services_Provision" ToRole="Orders_Services" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK__Services___ID_St__07C12930" FromRole="Services_Provision" ToRole="Statuses" />
+        </EntityType>
+        <EntityType Name="Social_Security_Types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK__Patients__ID_Soc__71D1E811" FromRole="Social_Security_Types" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_Order__7F2BE32F" FromRole="Statuses" ToRole="Orders" />
+          <NavigationProperty Name="Services_Provision" Relationship="Self.FK__Services___ID_St__07C12930" FromRole="Statuses" ToRole="Services_Provision" />
+        </EntityType>
+        <Association Name="FK__Services___ID_An__08B54D69">
+          <End Role="Analyzers" Type="Self.Analyzers" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analyzers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Analyzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patients__ID_Cou__72C60C4A">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__ID_Em__5EBF139D">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees_Services" Type="Self.Employees_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees_Services">
+              <PropertyRef Name="ID_Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__ID_Ro__5BE2A6F2">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_Em__09A971A2">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__ID_Se__5FB337D6">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Employees_Services" Type="Self.Employees_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees_Services">
+              <PropertyRef Name="ID_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patients__ID_Ins__73BA3083">
+          <End Role="Insurances" Type="Self.Insurances" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurances">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="ID_Insurance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ID_Order__7F2BE32F">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_Order_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ID_Patie__7E37BEF6">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_Se__ID_Or__02084FDA">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_Se__ID_Se__02FC7413">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="ID_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_Or__06CD04F7">
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders_Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Order_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patients__ID_Soc__71D1E811">
+          <End Role="Social_Security_Types" Type="Self.Social_Security_Types" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Social_Security_Types">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="ID_Social_Sec_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services___ID_St__07C12930">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Services_Provision" Type="Self.Services_Provision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Services_Provision">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaboratoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Analyzers" EntityType="Self.Analyzers" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Employees_Services" EntityType="Self.Employees_Services" />
+          <EntitySet Name="Insurances" EntityType="Self.Insurances" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Orders_Services" EntityType="Self.Orders_Services" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Services" EntityType="Self.Services" />
+          <EntitySet Name="Services_Provision" EntityType="Self.Services_Provision" />
+          <EntitySet Name="Social_Security_Types" EntityType="Self.Social_Security_Types" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" />
+          <AssociationSet Name="FK__Services___ID_An__08B54D69" Association="Self.FK__Services___ID_An__08B54D69">
+            <End Role="Analyzers" EntitySet="Analyzers" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patients__ID_Cou__72C60C4A" Association="Self.FK__Patients__ID_Cou__72C60C4A">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__ID_Em__5EBF139D" Association="Self.FK__Employees__ID_Em__5EBF139D">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Services" EntitySet="Employees_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__ID_Ro__5BE2A6F2" Association="Self.FK__Employees__ID_Ro__5BE2A6F2">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_Em__09A971A2" Association="Self.FK__Services___ID_Em__09A971A2">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__ID_Se__5FB337D6" Association="Self.FK__Employees__ID_Se__5FB337D6">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Employees_Services" EntitySet="Employees_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patients__ID_Ins__73BA3083" Association="Self.FK__Patients__ID_Ins__73BA3083">
+            <End Role="Insurances" EntitySet="Insurances" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ID_Order__7F2BE32F" Association="Self.FK__Orders__ID_Order__7F2BE32F">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ID_Patie__7E37BEF6" Association="Self.FK__Orders__ID_Patie__7E37BEF6">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_Se__ID_Or__02084FDA" Association="Self.FK__Orders_Se__ID_Or__02084FDA">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_Se__ID_Se__02FC7413" Association="Self.FK__Orders_Se__ID_Se__02FC7413">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_Or__06CD04F7" Association="Self.FK__Services___ID_Or__06CD04F7">
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patients__ID_Soc__71D1E811" Association="Self.FK__Patients__ID_Soc__71D1E811">
+            <End Role="Social_Security_Types" EntitySet="Social_Security_Types" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services___ID_St__07C12930" Association="Self.FK__Services___ID_St__07C12930">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Services_Provision" EntitySet="Services_Provision" />
+          </AssociationSet>
+          <EntitySet Name="Enters" EntityType="LaboratoryModel.Enters" />
+          <AssociationSet Name="FK_Enters_Employees" Association="LaboratoryModel.FK_Enters_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Enters" EntitySet="Enters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Enters">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Emloyee" Type="Int32" />
+          <Property Name="Last_Enter_Date" Type="DateTime" Precision="0" />
+          <Property Name="Last_Enter_Time" Type="Time" Precision="7" />
+          <Property Name="Success" Type="Boolean" />
+          <NavigationProperty Name="Employees" Relationship="LaboratoryModel.FK_Enters_Employees" FromRole="Enters" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK_Enters_Employees">
+          <End Type="LaboratoryModel.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="LaboratoryModel.Enters" Role="Enters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Enters">
+              <PropertyRef Name="ID_Emloyee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LaboratoryModelContainer" CdmEntityContainer="LaboratoryEntities">
+          <EntitySetMapping Name="Analyzers">
+            <EntityTypeMapping TypeName="LaboratoryModel.Analyzers">
+              <MappingFragment StoreEntitySet="Analyzers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="LaboratoryModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="LaboratoryModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Invoices_Issued" ColumnName="Invoices_Issued" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees_Services">
+            <EntityTypeMapping TypeName="LaboratoryModel.Employees_Services">
+              <MappingFragment StoreEntitySet="Employees_Services">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+                <ScalarProperty Name="ID_Service" ColumnName="ID_Service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurances">
+            <EntityTypeMapping TypeName="LaboratoryModel.Insurances">
+              <MappingFragment StoreEntitySet="Insurances">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="PC" ColumnName="PC" />
+                <ScalarProperty Name="Bik" ColumnName="Bik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="LaboratoryModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="ID_Order_Status" ColumnName="ID_Order_Status" />
+                <ScalarProperty Name="Order_Fulfillment_Days" ColumnName="Order_Fulfillment_Days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders_Services">
+            <EntityTypeMapping TypeName="LaboratoryModel.Orders_Services">
+              <MappingFragment StoreEntitySet="Orders_Services">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Service" ColumnName="ID_Service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="LaboratoryModel.Patients">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Social_Sec_Number" ColumnName="Social_Sec_Number" />
+                <ScalarProperty Name="Ein" ColumnName="Ein" />
+                <ScalarProperty Name="ID_Social_Sec_Type" ColumnName="ID_Social_Sec_Type" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Passport_Series" ColumnName="Passport_Series" />
+                <ScalarProperty Name="Passport_Number" ColumnName="Passport_Number" />
+                <ScalarProperty Name="Birth_Date_Timestamp" ColumnName="Birth_Date_Timestamp" />
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+                <ScalarProperty Name="ID_Insurance" ColumnName="ID_Insurance" />
+                <ScalarProperty Name="IP_Adress" ColumnName="IP_Adress" />
+                <ScalarProperty Name="UA" ColumnName="UA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="LaboratoryModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="LaboratoryModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Execution_Period" ColumnName="Execution_Period" />
+                <ScalarProperty Name="Average_Deviation" ColumnName="Average_Deviation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services_Provision">
+            <EntityTypeMapping TypeName="LaboratoryModel.Services_Provision">
+              <MappingFragment StoreEntitySet="Services_Provision">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Order_Service" ColumnName="ID_Order_Service" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Finished_Date_Time" ColumnName="Finished_Date_Time" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+                <ScalarProperty Name="ID_Analyzer" ColumnName="ID_Analyzer" />
+                <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+                <ScalarProperty Name="Execution_Seconds" ColumnName="Execution_Seconds" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Social_Security_Types">
+            <EntityTypeMapping TypeName="LaboratoryModel.Social_Security_Types">
+              <MappingFragment StoreEntitySet="Social_Security_Types">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="LaboratoryModel.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enters">
+            <EntityTypeMapping TypeName="LaboratoryModel.Enters">
+              <MappingFragment StoreEntitySet="Enters">
+                <ScalarProperty Name="Success" ColumnName="Success" />
+                <ScalarProperty Name="Last_Enter_Time" ColumnName="Last_Enter_Time" />
+                <ScalarProperty Name="Last_Enter_Date" ColumnName="Last_Enter_Date" />
+                <ScalarProperty Name="ID_Emloyee" ColumnName="ID_Emloyee" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
